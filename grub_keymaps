@@ -21,7 +21,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 ### S1 ckbcomp
-# Use bundled ckbcomp script
+# Use bundled ckbcomp script from repo unlikely to change very much
 CKBCOMP="$SCRIPT_DIR/lib/ckbcomp"
 
 # Check if bundled ckbcomp exists
