@@ -1,6 +1,6 @@
 #!/bin/sh
 # script to set the keymap properly in grub2
-# includes bundled ckbcomp perl script
+# includes bundled ckbcomp perl script in repo from AUR unlikely to change much
 # heavily inspired by fitzcarraldoblog cheers 
 # assumes standard /boot/ 
 
@@ -31,6 +31,8 @@ if [ ! -f "$CKBCOMP" ]; then
 else
     chmod +x "$CKBCOMP"
 fi
+## Made a kb validator using xkeyboard-config layout usually generated at /usr/share/X11/xkb/symbols
+## Simply checks layout and variant are correct
 "$SCRIPT_DIR/lib/symap_main.py" $KB_LAYOUT $KB_VARIANT || { echo "Error: Invalid keyboard layout or variant"; exit 1; } 
 
 ### S2 prepare files for grub
