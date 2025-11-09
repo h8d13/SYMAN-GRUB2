@@ -38,7 +38,8 @@ fi
 ### S2 prepare files for grub
 mkdir -p $GRUB_LAY
 ### S2.1 gen layout compatible with grub
-# this might generate a bunch of errors since grub only supports 1-127. but this is fine for standard terminal use.
+# this might generate a bunch of errors since grub only supports 1-127. but this is fine for alphanurmeric encryption passwords
+# no language specific chars in pw
 "$CKBCOMP" $KB_LAYOUT $KB_VARIANT | grub-mklayout -o $GRUB_LAY/$KB_LAYOUT.gkb
 
 if [ -f $GRUB_LAY/$KB_LAYOUT.gkb ]; then
