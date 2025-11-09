@@ -45,7 +45,7 @@ else
     echo "Failed to generate layout file"
     exit 1
 fi
-### S3 modify grub files
+### S3 modify /etc/default/grub files
 if grep -q "GRUB_TERMINAL_INPUT.*console" $GRUB_DEF; then
     echo "Found console setting, replacing..."
     sed -i 's/=console/=at_keyboard/g' $GRUB_DEF
@@ -53,6 +53,7 @@ else
     echo "Console setting not found or already modified"
     exit 1
 fi
+## Can also be added to 00_header
 if ! grep -q "insmod keylayouts" /etc/grub.d/40_custom; then
     echo "Adding mods to grub 40__custom"
     tee -a /etc/grub.d/40_custom << EOF
@@ -63,6 +64,7 @@ else
     echo "40__custom not found or already modified"
     exit 1
 fi
+
 ### S4 modify some more and apply
 # Add to GRUB if not already there
 if ! grep -q "locale=$LOCALE" $GRUB_DEF; then
